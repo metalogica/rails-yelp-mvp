@@ -1,0 +1,13 @@
+// Import page-specific CSS files here.
+@import "home";
+@import "restaurants.scss";
+@import "reviews.scss";
+
+body {
+  margin: 0;
+  background-color: white;
+}
+
+a:visited {
+  color: inherit;
+}

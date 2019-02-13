@@ -1,0 +1,40 @@
+<div class="header">
+  <h1>Superb, Heavenly, Incredible, Timeless Reviews</h1>
+  <p>Next time you eat out, leave a SHIT after you!</p>
+  <%= link_to("Create A New Restaurant to SHIT on:", new_restaurant_path)%>
+</div>
+<h2 style="text-align: center;">Restaurants Others Have SHIT on:</h2>
+
+<div class="main-container">
+  <!-- Redundant -->
+  <% def random_img %>
+    <% img_array = [] %>
+    <% img1 = "https://source.unsplash.com/user/geostablephl/200x200" %>
+    <% img2 = "https://source.unsplash.com/user/edguk/200x200" %>
+    <% img3 = "https://source.unsplash.com/user/eaterscollective/200x200" %>
+    <% img4 = "https://source.unsplash.com/user/chuttersnap/200x200" %>
+    <% img5 = "https://source.unsplash.com/user/moniqa/200x200" %>
+    <% img_array << img1 %>
+    <% img_array << img2 %>
+    <% img_array << img3 %>
+    <% img_array << img4 %>
+    <% img_array << img5 %>
+    <% img_array[rand(0...img_array.size)] %>
+  <% end %>
+
+  <% @restaurants.each do |restaurant| %>
+  <div class="restaurant-card">
+    <div class="resaurant-card-top">
+      <img src="https://source.unsplash.com/user/moniqa/200x200?<%= rand %>">
+    </div>
+    <div class="restaurant-card-bottom">
+      <p id="restaurant-name"><%= restaurant.name %></p>
+      <p><%= restaurant.address %></p>
+      <p><%= restaurant.phone_number %></p>
+      <%= link_to("Reviews", restaurant_path(restaurant.id)) %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<p style="text-align: center;">No more SHIT</p>

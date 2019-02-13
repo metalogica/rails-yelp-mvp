@@ -1,0 +1,20 @@
+<div class="header" style="background-image: url('https://source.unsplash.com/user/geostablephl/1400x800')">
+  <h2><%= @restaurant.name %></h2>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <div class="back-button">
+    <%= link_to("<<< Back", restaurants_path)%>
+  </div>
+</div>
+<hr>
+<%= link_to("Write a Review", new_restaurant_review_path(@restaurant)) %>
+<hr>
+<h2 style="text-align: center;">Reviews</h2>
+<div class="main-container">
+  <% @reviews.each do |review| %>
+    <div class="review-card">
+      <p id="rating">Rating: <%= review.rating %></p>
+      <p id="review"><%= review.content %></p>
+    </div>
+  <% end %>
+</div>

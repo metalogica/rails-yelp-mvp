@@ -1,0 +1,22 @@
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <% if @review.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% %>
+  <% f.hidden_field :restaurant_id, :value => @restaurant_id %>
+
+  <%= f.input :rating, collection: 0..5%>
+
+  <%= f.label :Review %>
+  <%= f.text_field :content, placeholder: "Prithy enter thine review" %>
+
+  <%= f.button :submit %>
+<% end %>
+
+
