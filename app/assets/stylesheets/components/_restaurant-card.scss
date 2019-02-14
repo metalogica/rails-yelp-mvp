@@ -2,13 +2,22 @@
   width: 400px;
   height: 210px;
   border: 1px solid rgba(0,0,0,0.1);
-  margin: 20px;
+  margin: 20px 20px 20px 0px;
+  // margin-left: 0px;
   display: flex;
   flex-direction: rows;
   padding: 5px;
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 0.7em;
+  transition: all 1s ease;
+}
+
+.restaurant-card:hover {
+  margin-left: 110px;
+  transition: all 1s ease;
+  // transform: rotate(900deg);
+  // transform-origin: 20% 40%;
 }
 
 .restaurant-card-top {
@@ -43,9 +52,6 @@
   color: inherit;
 }
 
-.restaurant-card:hover {
-  margin-left: 110px;
-  transition: all 0.4s ease;
-}
+
 
 
