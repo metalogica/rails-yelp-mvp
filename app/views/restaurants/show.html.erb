@@ -1,3 +1,4 @@
+<!-- /views/restaurants/show -->
 <div class="header" style="background-image: url('https://source.unsplash.com/user/geostablephl/1400x800')">
   <h2><%= @restaurant.name %></h2>
   <p><%= @restaurant.address %></p>
@@ -8,13 +9,18 @@
 </div>
 <hr>
 <%= link_to("Write a Review", new_restaurant_review_path(@restaurant)) %>
+<div>
+  <%= render 'reviews/form-review', id: 'new_review', restaurant: @restaurant, review: @review %>
+  <h1><%= @restaurant.name %> <small><%= @restaurant.address %></small></h1>
+<h2 id="counter">
+  <%= pluralize @restaurant.reviews.size, "review" %>
+</h2>
+</div>
 <hr>
 <h2 style="text-align: center;">Reviews</h2>
-<div class="main-container">
-  <% @reviews.each do |review| %>
-    <div class="review-card">
-      <p id="rating">Rating: <%= review.rating %></p>
-      <p id="review"><%= review.content %></p>
-    </div>
+<div id="reviews" class="main-container">
+  <% @restaurant.reviews.reverse_each do |review| %>
+      <%= render 'reviews/show', review: review %>
   <% end %>
 </div>
+

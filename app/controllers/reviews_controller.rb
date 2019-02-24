@@ -8,9 +8,15 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @restaurant = Restaurant.find(@review.restaurant_id)
     if @review.save
-      redirect_to(restaurant_path(@restaurant))
+      respond_to do |format|
+        format.html { redirect_to(restaurant_path(@restaurant))}
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'restaurants/new' }
+        format.js
+      end
     end
   end
 

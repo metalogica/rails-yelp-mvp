@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @restaurant = Restaurant.find(params[:id])
     @reviews = Review.all.where("restaurant_id = #{@restaurant.id}")
   end
@@ -15,10 +16,20 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
-      redirect_to(restaurant_path(@restaurant))
+      respond_to do |format|
+        format.html { redirect_to(restaurant_path(@restaurant)) }
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'restaurants/show' }
+        format.js
+      end
     end
+  end
+
+  def destroy
+
   end
 
   private

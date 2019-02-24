@@ -23,17 +23,17 @@
   <% end %>
 
   <% @restaurants.each do |restaurant| %>
-  <div class="restaurant-card">
-    <div class="resaurant-card-top">
-      <img src="https://source.unsplash.com/user/moniqa/200x200?<%= rand %>">
+    <div class="restaurant-card">
+      <div class="resaurant-card-top">
+        <img src="https://source.unsplash.com/user/moniqa/200x200?<%= rand %>">
+      </div>
+      <div class="restaurant-card-bottom">
+        <p id="restaurant-name"><%= restaurant.name %></p>
+        <p><%= restaurant.address %></p>
+        <p><%= restaurant.phone_number %></p>
+        <%= link_to("Reviews", restaurant_path(restaurant.id)) %>
+      </div>
     </div>
-    <div class="restaurant-card-bottom">
-      <p id="restaurant-name"><%= restaurant.name %></p>
-      <p><%= restaurant.address %></p>
-      <p><%= restaurant.phone_number %></p>
-      <%= link_to("Reviews", restaurant_path(restaurant.id)) %>
-    </div>
-  </div>
   <% end %>
 </div>
 

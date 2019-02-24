@@ -1,0 +1,27 @@
+// app/views/reviews/create.js.erb
+function refreshForm(innerHTML) {
+  const newReviewForm = document.getElementById('new_review'); // Review Form
+  newReviewForm.innerHTML = innerHTML;
+}
+
+function addReview(reviewHTML) {
+  const reviews = document.getElementById('reviews');
+  reviews.insertAdjacentHTML('afterbegin', reviewHTML);
+}
+
+function addCounter() {
+  const counter = document.getElementById("counter");
+  let x = counter.innerText.split(" ")[0];
+  let y = parseInt(x, 10);
+  let z = y + 1;
+  return counter.innerText = `${z} reviews`;
+}
+
+<% if @review.errors.any? %>
+  refreshForm('<%= j render "reviews/form-review", restaurant: @restaurant, review: @review %>'); //remove content in form text area
+<% else %>
+  addCounter(); // increment counter by 1
+  addReview('<%= j render "reviews/show", review: @review %>');  // create the html for the view
+  refreshForm('<%= j render "reviews/form-review", restaurant: @restaurant, review: Review.new %>'); //append review to list
+<% end %>
+
