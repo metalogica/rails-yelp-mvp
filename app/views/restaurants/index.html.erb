@@ -23,7 +23,7 @@
   <% end %>
 
   <% @restaurants.each do |restaurant| %>
-    <div class="restaurant-card">
+    <div class="restaurant-card" data-restaurant-id="<%= restaurant.id %>">
       <div class="resaurant-card-top">
         <img src="https://source.unsplash.com/user/moniqa/200x200?<%= rand %>">
       </div>
@@ -32,6 +32,7 @@
         <p><%= restaurant.address %></p>
         <p><%= restaurant.phone_number %></p>
         <%= link_to("Reviews", restaurant_path(restaurant.id)) %>
+        <%= link_to "Delete", restaurant_path(restaurant), method: :delete, remote: true %>
       </div>
     </div>
   <% end %>
